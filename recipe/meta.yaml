@@ -50,6 +50,11 @@ test:
   source_files:
     - python_tests
   commands:
+    # Set both modern (PROJ >= 9.1) and legacy variables
+    - export PROJ_DATA="${PREFIX}/share/proj"  # [unix]
+    - export PROJ_LIB="${PREFIX}/share/proj"   # [unix]
+    - set "PROJ_DATA=%PREFIX%\\Library\\share\\proj"  # [win]
+    - set "PROJ_LIB=%PREFIX%\\Library\\share\\proj"   # [win]
     - pytest python_tests                    # [not win]
   imports:
     - rsgislib
